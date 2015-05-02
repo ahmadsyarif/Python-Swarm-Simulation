@@ -27,7 +27,7 @@ def draw_swarm(n,win):
 	return robot
 	pass
 
-def dynamics(robot,robots):
+def dynamics_meeting_point(robot,robots):
 	#dynamics of the swarm
 	x_total,y_total = relative_distance(robot,robots)
 	lock.acquire()
@@ -48,10 +48,10 @@ def dynamics(robot,robots):
 		pass
 	pass
 
-def simulate(robots):
+def simulate_meeting_point(robots):
 	#run simulation using multithreading
 	for robot in robots:
-		worker = threading.Thread(target=dynamics,args=(robot,robots))
+		worker = threading.Thread(target=dynamics_meeting_point,args=(robot,robots))
 		worker.setDaemon(True)
 		worker.start() 	
 		pass
@@ -84,9 +84,9 @@ def relative_distance(robot,robots):
 def main():
 	#main program
 	win = draw_windows(700,600) #draw window with width = 700 and height = 600
-	robots = draw_swarm(7,win) #draw 7 swarm in win
+	robots = draw_swarm(3,win) #draw 7 swarm in win
 	win.getMouse() #blocking call
-	simulate(robots) #start simulation
+	simulate_meeting_point(robots) #start simulation meeting point
 	win.getMouse()
 	pass
 
