@@ -5,8 +5,6 @@ import time
 import math
 import threading
 from random import randint
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
 
 class robot(object):
 	"""class for defining robot"""
